@@ -1,0 +1,1870 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Jewels Nursery School - Where Learning Sparkles!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #FF6B9D, #6BCF7F);
+            border-radius: 10px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.2rem;
+            color: #FF6B9D;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #FFD93D, #98E4D6);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 217, 61, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: #FF6B9D;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 25%, #E5FFE5 50%, #FFF5E5 75%, #F0E5FF 100%);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23FFD93D" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="%2398E4D6" opacity="0.4"/><circle cx="40" cy="80" r="1" fill="%23FF6B9D" opacity="0.3"/><circle cx="70" cy="10" r="1.2" fill="%236BCF7F" opacity="0.4"/></svg>') repeat;
+            animation: floatBubbles 25s infinite linear;
+        }
+
+        @keyframes floatBubbles {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-100px, -100px) rotate(360deg); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: left;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            color: #FF6B9D;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-highlight {
+            background: linear-gradient(45deg, #FFD93D, #98E4D6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #6BCF7F, #98E4D6);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: #FF6B9D;
+            padding: 1.2rem 2.5rem;
+            border: 2px solid #FF6B9D;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background: #FF6B9D;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transform: rotate(3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: #FFD93D;
+            animation: floatIcon 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 60px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3rem;
+            color: #FF6B9D;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 100px 0;
+            background: #FAFAFA;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #FF6B9D;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .mission-text {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .mission-text:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-text h3 {
+            color: #6BCF7F;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .mission-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .mission-visual {
+            position: relative;
+        }
+
+        .mission-image {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .mission-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .value-card:nth-child(1) { border-top-color: #FF6B9D; }
+        .value-card:nth-child(2) { border-top-color: #6BCF7F; }
+        .value-card:nth-child(3) { border-top-color: #FFD93D; }
+        .value-card:nth-child(4) { border-top-color: #98E4D6; }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+        }
+
+        .value-card:nth-child(2) .value-icon {
+            background: linear-gradient(45deg, #6BCF7F, #98E4D6);
+        }
+
+        .value-card:nth-child(3) .value-icon {
+            background: linear-gradient(45deg, #FFD93D, #FF6B9D);
+        }
+
+        .value-card:nth-child(4) .value-icon {
+            background: linear-gradient(45deg, #98E4D6, #6BCF7F);
+        }
+
+        .value-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* Activities Section */
+        .activities {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #E5F3FF, #E5FFE5);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .activity-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+            transition: transform 0.3s ease;
+        }
+
+        .activity-card:hover .activity-icon {
+            transform: rotateY(180deg);
+        }
+
+        .activity-card h3 {
+            color: #FF6B9D;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .activity-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Admissions Section */
+        .admissions {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #FFF5E5, #FFE5E5);
+        }
+
+        .admissions-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .admissions-text {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .admissions-text:hover {
+            transform: translateY(-10px);
+        }
+
+        .admissions-text h3 {
+            color: #6BCF7F;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .admissions-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .admissions-visual {
+            position: relative;
+        }
+
+        .admissions-image {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .admissions-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .admissions-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+            margin-right: 1rem;
+        }
+
+        .program-card h3 {
+            color: #FF6B9D;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .age-range {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: #f8f9fa;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .program-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .program-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+
+        .program-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #6BCF7F;
+            margin-right: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .program-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #FF6B9D;
+            margin-bottom: 1rem;
+        }
+
+        .enrollment-process {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-card h4 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .requirements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .requirement-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .requirement-card h4 {
+            color: #6BCF7F;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .requirement-card h4 i {
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .requirement-list {
+            list-style: none;
+        }
+
+        .requirement-list li {
+            padding: 0.3rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .requirement-list li::before {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #FF6B9D;
+            margin-right: 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 250px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 107, 157, 0.8), rgba(152, 228, 214, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #FFE5E5, #F0E5FF);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #f8f9fa;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+            margin-right: 1.5rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF6B9D;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #FF6B9D, #6BCF7F);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="0.8" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="0.6" fill="white" opacity="0.1"/></svg>') repeat;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section h3 {
+            font-family: 'Fredoka One', cursive;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #FF6B9D, #FFD93D);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+
+            .admissions-intro {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                Little Jewels
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#curriculum">Curriculum</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-icons">
+            <div class="floating-icon"><i class="fas fa-star"></i></div>
+            <div class="floating-icon"><i class="fas fa-heart"></i></div>
+            <div class="floating-icon"><i class="fas fa-rainbow"></i></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i> Award-Winning Early Learning Center
+                </div>
+                <h1>Welcome to <span class="hero-highlight">Little Jewels</span> Nursery School!</h1>
+                <p>Where every child shines bright and learning becomes an adventure filled with joy, discovery, and endless possibilities. We nurture young minds with love, creativity, and professional excellence.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="cta-button">
+                        <span>Enroll Your Child Today</span>
+                    </a>
+                    <a href="#about" class="secondary-button">Learn More About Us</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="hero-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/04aff89e-64bf-4ae2-a7c5-03658f7a7e87.png" alt="Happy diverse group of children playing together in a bright, colorful nursery classroom with educational toys, books, and creative learning materials scattered around" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stats-grid" data-aos="fade-up" data-aos-duration="800">
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Happy Families</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Expert Teachers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Parent Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Mission & Values</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Creating a foundation for lifelong learning through innovative education and nurturing care</p>
+            
+            <div class="mission-content">
+                <div class="mission-text" data-aos="fade-right" data-aos-duration="800">
+                    <h3><i class="fas fa-lightbulb"></i> Our Mission</h3>
+                    <p>At Little Jewels, we believe every child is a precious gem waiting to sparkle! We provide a nurturing, safe, and stimulating environment where children can explore, learn, and grow at their own pace. Our dedicated team of educators is committed to fostering creativity, curiosity, and confidence in every little learner.</p>
+                </div>
+                <div class="mission-visual" data-aos="fade-left" data-aos-duration="800">
+                    <div class="mission-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7c4457e5-57be-47d1-95a4-195098de7534.png" alt="Professional teachers engaging with young children in a modern, bright classroom setting with educational activities and learning materials" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="values">
+                <div class="value-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Love & Care</h3>
+                    <p>Every child receives individual attention and care in our warm, family-like environment where love guides everything we do.</p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                    <div class="value-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Creative Learning</h3>
+                    <p>We foster imagination and creativity through hands-on activities, artistic expression, and innovative teaching methods.</p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety First</h3>
+                    <p>Our secure environment and trained staff ensure your child's safety and well-being are always our top priority.</p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We build strong partnerships with families and create a supportive community where everyone belongs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities" id="curriculum">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Learning Activities</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Engaging programs designed to develop every aspect of your child's growth</p>
+            
+            <div class="activities-grid">
+                <div class="activity-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                    <div class="activity-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Creative Arts</h3>
+                    <p>Painting, drawing, crafts, and music activities that unleash your child's artistic potential and self-expression.</p>
+                </div>
+                <div class="activity-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                    <div class="activity-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Language & Literacy</h3>
+                    <p>Story time, phonics, early reading, and writing skills development through fun and interactive methods.</p>
+                </div>
+                <div class="activity-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                    <div class="activity-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Math & Science</h3>
+                    <p>Number games, counting, basic math concepts, and hands-on science experiments for curious minds.</p>
+                </div>
+                <div class="activity-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+                    <div class="activity-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Physical Development</h3>
+                    <p>Outdoor play, sports, yoga, and motor skills activities to promote healthy physical development.</p>
+                </div>
+                <div class="activity-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
+                    <div class="activity-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Nature Exploration</h3>
+                    <p>Garden time, nature walks, and environmental awareness activities to connect children with nature.</p>
+                </div>
+                <div class="activity-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
+                    <div class="activity-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Music & Movement</h3>
+                    <p>Singing, dancing, instrument play, and rhythm activities that develop musical appreciation and coordination.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section class="admissions" id="admissions">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Admissions</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Join our nurturing community where every child's potential is discovered and celebrated</p>
+            
+            <div class="admissions-intro">
+                <div class="admissions-text" data-aos="fade-right" data-aos-duration="800">
+                    <h3><i class="fas fa-graduation-cap"></i> Start Your Child's Journey</h3>
+                    <p>We welcome children from 18 months to 5 years old into our warm and caring environment. Our admissions process is designed to ensure the best fit for your child's unique needs and learning style.</p>
+                    <p>At Little Jewels, we believe that early childhood education sets the foundation for lifelong learning. Our experienced team is committed to providing personalized attention to help every child thrive academically, socially, and emotionally.</p>
+                    <a href="#contact" class="cta-button">
+                        <span>Schedule a Visit</span>
+                    </a>
+                </div>
+                <div class="admissions-visual" data-aos="fade-left" data-aos-duration="800">
+                    <div class="admissions-image">
+                        <img src="https://placehold.co/500x350?text=Admissions+Tour" alt="Parent and child touring bright nursery classroom with friendly teacher showing educational activities and learning spaces" />
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title" style="font-size: 2.5rem; margin-bottom: 3rem;" data-aos="fade-up">Our Programs</h3>
+            
+            <div class="programs-grid">
+                <div class="program-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div>
+                            <h3>Toddler Program</h3>
+                            <span class="age-range">18 months - 3 years</span>
+                        </div>
+                    </div>
+                    <ul class="program-features">
+                        <li>Gentle introduction to structured learning</li>
+                        <li>Sensory exploration activities</li>
+                        <li>Language development focus</li>
+                        <li>Potty training support</li>
+                        <li>Small group activities</li>
+                        <li>Individual attention & care</li>
+                    </ul>
+                    <div class="program-price">$800/month</div>
+                    <a href="#contact" class="secondary-button" style="width: 100%; text-align: center;">Learn More</a>
+                </div>
+
+                <div class="program-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <div>
+                            <h3>Preschool Program</h3>
+                            <span class="age-range">3 - 4 years</span>
+                        </div>
+                    </div>
+                    <ul class="program-features">
+                        <li>Early literacy & numeracy skills</li>
+                        <li>Creative arts & crafts</li>
+                        <li>Social skills development</li>
+                        <li>Outdoor exploration time</li>
+                        <li>Music & movement activities</li>
+                        <li>Science discovery projects</li>
+                    </ul>
+                    <div class="program-price">$950/month</div>
+                    <a href="#contact" class="secondary-button" style="width: 100%; text-align: center;">Learn More</a>
+                </div>
+
+                <div class="program-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <h3>Pre-K Program</h3>
+                            <span class="age-range">4 - 5 years</span>
+                        </div>
+                    </div>
+                    <ul class="program-features">
+                        <li>Kindergarten readiness skills</li>
+                        <li>Advanced phonics & reading</li>
+                        <li>Math concepts & problem solving</li>
+                        <li>Independent learning skills</li>
+                        <li>Leadership opportunities</li>
+                        <li>Technology integration</li>
+                    </ul>
+                    <div class="program-price">$1,100/month</div>
+                    <a href="#contact" class="secondary-button" style="width: 100%; text-align: center;">Learn More</a>
+                </div>
+            </div>
+
+            <div class="enrollment-process" data-aos="fade-up" data-aos-duration="800">
+                <h3 style="text-align: center; color: #FF6B9D; font-size: 2rem; margin-bottom: 1rem;">Enrollment Process</h3>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem;">Simple steps to join our Little Jewels family</p>
+                
+                <div class="process-steps">
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-number">1</div>
+                        <h4>Schedule a Visit</h4>
+                        <p>Contact us to arrange a personalized tour of our facilities and meet our caring staff.</p>
+                    </div>
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-number">2</div>
+                        <h4>Submit Application</h4>
+                        <p>Complete our simple online application form with your child's information and preferences.</p>
+                    </div>
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-number">3</div>
+                        <h4>Meet & Greet</h4>
+                        <p>Arrange a casual meeting for your child to interact with teachers and explore the classroom.</p>
+                    </div>
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-number">4</div>
+                        <h4>Welcome to Little Jewels!</h4>
+                        <p>Complete enrollment paperwork and begin your child's exciting learning adventure with us.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title" style="font-size: 2.5rem; margin-bottom: 3rem;" data-aos="fade-up">Requirements & Information</h3>
+            
+            <div class="requirements">
+                <div class="requirement-card" data-aos="fade-up" data-aos-delay="100">
+                    <h4><i class="fas fa-file-alt"></i> Required Documents</h4>
+                    <ul class="requirement-list">
+                        <li>Completed enrollment application</li>
+                        <li>Child's birth certificate</li>
+                        <li>Current immunization records</li>
+                        <li>Health examination form</li>
+                        <li>Emergency contact information</li>
+                        <li>Parent/guardian photo ID</li>
+                    </ul>
+                </div>
+                
+                <div class="requirement-card" data-aos="fade-up" data-aos-delay="200">
+                    <h4><i class="fas fa-clock"></i> Operating Hours</h4>
+                    <ul class="requirement-list">
+                        <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
+                        <li>Extended care available upon request</li>
+                        <li>Closed on major holidays</li>
+                        <li>Summer program available</li>
+                        <li>Flexible pickup and drop-off times</li>
+                        <li>Parent portal for updates</li>
+                    </ul>
+                </div>
+                
+                <div class="requirement-card" data-aos="fade-up" data-aos-delay="300">
+                    <h4><i class="fas fa-heart"></i> What We Provide</h4>
+                    <ul class="requirement-list">
+                        <li>Nutritious meals and snacks</li>
+                        <li>All learning materials and supplies</li>
+                        <li>Secure outdoor playground</li>
+                        <li>Regular progress reports</li>
+                        <li>Parent-teacher conferences</li>
+                        <li>Special events and celebrations</li>
+                    </ul>
+                </div>
+                
+                <div class="requirement-card" data-aos="fade-up" data-aos-delay="400">
+                    <h4><i class="fas fa-dollar-sign"></i> Tuition & Fees</h4>
+                    <ul class="requirement-list">
+                        <li>Registration fee: $150 (one-time)</li>
+                        <li>Monthly tuition varies by program</li>
+                        <li>Sibling discounts available</li>
+                        <li>Payment plans offered</li>
+                        <li>Financial assistance programs</li>
+                        <li>No hidden fees or charges</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;" data-aos="fade-up">
+                <h3 style="color: #FF6B9D; margin-bottom: 1rem;">Ready to Get Started?</h3>
+                <p style="color: #666; margin-bottom: 2rem; font-size: 1.1rem;">We'd love to meet you and your little one! Contact us today to schedule a visit.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="#contact" class="cta-button">
+                        <span>Schedule a Visit</span>
+                    </a>
+                    <a href="tel:(555)123-4567" class="secondary-button">Call Us Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Photo Gallery</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Glimpses of joy, learning, and growth at Little Jewels</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3d18e35e-2cb9-4c19-b432-88f425f64173.png" alt="Children engaged in colorful art activity, painting with bright watercolors on large paper in a well-lit art corner" />
+                    <div class="gallery-overlay">Art Time Fun</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/76472bb4-ff0a-4629-a9e3-cac32860d1e0.png" alt="Story time circle with teacher reading to attentive children sitting on colorful cushions in library corner" />
+                    <div class="gallery-overlay">Story Time</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3973a55b-4ee4-4b1e-9676-82a05aca9735.png" alt="Children playing outdoors on playground equipment, swings and slides with safety mats in sunny garden setting" />
+                    <div class="gallery-overlay">Outdoor Play</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c1be5916-b40d-44ee-99d2-680e2312ec9d.png" alt="Music class with children holding small instruments, tambourines and maracas, with teacher leading musical activity" />
+                    <div class="gallery-overlay">Music Class</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/49c22c43-f930-419a-a7f1-6c3df7141062.png" alt="Science exploration with children observing plants and nature specimens using magnifying glasses in discovery center" />
+                    <div class="gallery-overlay">Science Discovery</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="600">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/37c48e7b-5c17-4ec5-b263-e88524481e6f.png" alt="Lunch time with children sitting at small tables eating healthy meals in bright, clean dining area" />
+                    <div class="gallery-overlay">Healthy Meals</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Ready to begin your child's learning journey? Contact us today!</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right" data-aos-duration="800">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Regimanuel Grey Estate<br>Nungua</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>0508889907</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>littlejewels@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 3:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left" data-aos-duration="800">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Parent/Guardian Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="childAge">Child's Age</label>
+                            <input type="text" id="childAge" name="childAge">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your child's needs or any questions you have..."></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Little Jewels Nursery</h3>
+                    <p>Where every child shines bright and learning becomes a joyful adventure. We're committed to providing the highest quality early childhood education.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#curriculum">Curriculum</a>
+                    <a href="#admissions">Admissions</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Programs</h3>
+                    <a href="#">Toddler Program (18 months - 3 years)</a>
+                    <a href="#">Preschool Program (3 - 4 years)</a>
+                    <a href="#">Pre-K Program (4 - 5 years)</a>
+                    <a href="#">Summer Camp</a>
+                    <a href="#">After School Care</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Rainbow Street, Happy Valley, HV 12345</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@littlejewels.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 7:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Little Jewels Nursery School. All rights reserved. | Designed with love for little learners.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = document.getElementById('scrollTop');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                scrollTop.classList.add('visible');
+            } else {
+                navbar.classList.remove('scrolled');
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top functionality
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            
+            // Simple validation
+            if (name.trim() === '') {
+                alert('Please fill in your name.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert(`Thank you, ${name}! Your message has been sent. We'll get back to you within 24 hours.`);
+            this.reset();
+        });
+
+        // Add hover effects to cards
+        const cards = document.querySelectorAll('.value-card, .activity-card, .gallery-item');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Animate counter numbers
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                const suffix = counter.textContent.replace(/[0-9]/g, '');
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target + suffix;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + suffix;
+                    }
+                }, 20);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(statsSection);
+
+        // Mobile menu toggle (basic functionality)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+
+```
+
