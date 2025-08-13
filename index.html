@@ -136,6 +136,57 @@
             cursor: pointer;
         }
 
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            z-index: 9999;
+            transition: left 0.3s ease;
+            padding-top: 80px;
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 2rem;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav ul li a {
+            display: block;
+            padding: 1rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav ul li a:hover {
+            color: #FF6B9D;
+            background: #f8f9fa;
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #FF6B9D;
+            cursor: pointer;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 25%, #E5FFE5 50%, #FFF5E5 75%, #F0E5FF 100%);
@@ -1115,28 +1166,86 @@
             box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
         }
 
-        /* Responsive Design */
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero-container {
+                gap: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .programs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
         @media (max-width: 968px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 3rem;
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
             }
 
             .hero h1 {
                 font-size: 3rem;
             }
 
+            .hero p {
+                font-size: 1.3rem;
+            }
+
             .mission-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .admissions-intro {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .stats-container {
+                padding: 0 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .values {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .requirements {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
         }
 
@@ -1149,25 +1258,287 @@
                 display: block;
             }
 
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 100px 0 50px;
+                min-height: auto;
+            }
+
+            .hero-container {
+                padding: 0 1rem;
+                gap: 2rem;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
+                line-height: 1.1;
             }
 
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
             }
 
-            .section-title {
-                font-size: 2.2rem;
+            .hero-badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 1rem;
+                margin-bottom: 1.5rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 0.8rem;
+            }
+
+            .cta-button, .secondary-button {
+                width: 100%;
+                max-width: 300px;
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .hero-image {
+                transform: rotate(0deg);
+            }
+
+            .hero-image img {
+                height: 250px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .stats-container {
+                padding: 0 1rem;
+            }
+
+            .stats {
+                padding: 40px 0;
+                margin-top: -30px;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 3rem;
+            }
+
+            .mission, .activities, .admissions, .gallery, .contact {
+                padding: 60px 0;
+            }
+
+            .mission-text, .admissions-text {
+                padding: 2rem;
+            }
+
+            .mission-text h3, .admissions-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .mission-text p, .admissions-text p {
+                font-size: 1rem;
+            }
+
+            .mission-image img, .admissions-image img {
+                height: 250px;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .value-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .value-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+
+            .activity-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .activity-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .program-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .program-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .program-icon {
+                margin-right: 0;
+            }
+
+            .enrollment-process {
+                padding: 2rem 1.5rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .step-card {
+                padding: 1.5rem;
+            }
+
+            .requirements {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .requirement-card {
+                padding: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+
+            .gallery-item {
+                height: 200px;
+            }
+
+            .contact-info, .contact-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .scroll-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-icons {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+
+            .stat-item {
+                padding: 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .value-card, .activity-card, .program-card, .requirement-card {
+                padding: 1.5rem;
+            }
+
+            .contact-item {
+                padding: 0.5rem;
+            }
+
+            .cta-button, .secondary-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
 
@@ -1266,7 +1637,7 @@
         <div class="stats-container">
             <div class="stats-grid" data-aos="fade-up" data-aos-duration="800">
                 <div class="stat-item">
-                    <span class="stat-number">5+</span>
+                    <span class="stat-number">15+</span>
                     <span class="stat-label">Years of Excellence</span>
                 </div>
                 <div class="stat-item">
@@ -1274,7 +1645,7 @@
                     <span class="stat-label">Happy Families</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">15+</span>
+                    <span class="stat-number">25+</span>
                     <span class="stat-label">Expert Teachers</span>
                 </div>
                 <div class="stat-item">
@@ -1406,7 +1777,7 @@
                 </div>
                 <div class="admissions-visual" data-aos="fade-left" data-aos-duration="800">
                     <div class="admissions-image">
-                        <img src="https://placehold.co/500x350?text=Admissions+Tour" alt="Parent and child touring bright nursery classroom with friendly teacher showing educational activities and learning spaces" />
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3afb56e6-983f-4d75-ac94-b98748a3cde9.png" alt="Parent and child touring bright nursery classroom with friendly teacher showing educational activities and learning spaces" />
                     </div>
                 </div>
             </div>
@@ -1432,7 +1803,7 @@
                         <li>Small group activities</li>
                         <li>Individual attention & care</li>
                     </ul>
-                    <div class="program-price">$800/month</div>
+                    <div class="program-price">1000GH/month</div>
                     <a href="#contact" class="secondary-button" style="width: 100%; text-align: center;">Learn More</a>
                 </div>
 
@@ -1454,7 +1825,7 @@
                         <li>Music & movement activities</li>
                         <li>Science discovery projects</li>
                     </ul>
-                    <div class="program-price">$950/month</div>
+                    <div class="program-price">2500GH/month</div>
                     <a href="#contact" class="secondary-button" style="width: 100%; text-align: center;">Learn More</a>
                 </div>
 
@@ -1476,7 +1847,7 @@
                         <li>Leadership opportunities</li>
                         <li>Technology integration</li>
                     </ul>
-                    <div class="program-price">$1,100/month</div>
+                    <div class="program-price">3999GH/month</div>
                     <a href="#contact" class="secondary-button" style="width: 100%; text-align: center;">Learn More</a>
                 </div>
             </div>
@@ -1527,7 +1898,7 @@
                 <div class="requirement-card" data-aos="fade-up" data-aos-delay="200">
                     <h4><i class="fas fa-clock"></i> Operating Hours</h4>
                     <ul class="requirement-list">
-                        <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
+                        <li>Monday - Friday: 7:00 AM - 3:00 PM</li>
                         <li>Extended care available upon request</li>
                         <li>Closed on major holidays</li>
                         <li>Summer program available</li>
@@ -1551,7 +1922,7 @@
                 <div class="requirement-card" data-aos="fade-up" data-aos-delay="400">
                     <h4><i class="fas fa-dollar-sign"></i> Tuition & Fees</h4>
                     <ul class="requirement-list">
-                        <li>Registration fee: $150 (one-time)</li>
+                        <li>Registration fee: 300GH (one-time)</li>
                         <li>Monthly tuition varies by program</li>
                         <li>Sibling discounts available</li>
                         <li>Payment plans offered</li>
@@ -1568,7 +1939,7 @@
                     <a href="#contact" class="cta-button">
                         <span>Schedule a Visit</span>
                     </a>
-                    <a href="tel:(555)123-4567" class="secondary-button">Call Us Today</a>
+                    <a href="tel:0508889907" class="secondary-button">Call Us Today</a>
                 </div>
             </div>
         </div>
@@ -1624,7 +1995,7 @@
                         </div>
                         <div>
                             <h4>Address</h4>
-                            <p>Regimanuel Grey Estate<br>Nungua</p>
+                            <p>REGIMANUEL ESTATE<br>Nungua</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1642,7 +2013,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>littlejewels@gmail.com</p>
+                            <p>littlejewels22@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1651,7 +2022,7 @@
                         </div>
                         <div>
                             <h4>Hours</h4>
-                            <p>Monday - Friday: 9:00 AM - 3:00 PM</p>
+                            <p>Monday - Friday: 7:00 AM - 3:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -1848,10 +2219,35 @@
         });
         observer.observe(statsSection);
 
-        // Mobile menu toggle (basic functionality)
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        // Enhanced Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileClose = document.getElementById('mobileClose');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+        function openMobileMenu() {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileClose.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking on a link
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu when clicking outside
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === mobileNav) {
+                closeMobileMenu();
+            }
         });
 
         // Add loading animation
@@ -1867,4 +2263,3 @@
 </html>
 
 ```
-
